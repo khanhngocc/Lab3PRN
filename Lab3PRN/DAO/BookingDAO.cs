@@ -17,8 +17,8 @@ namespace Lab3PRN.DAO
             List<Booking> lists = new List<Booking>();
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
-            String query = "Select Account.username,Booking.flight_id,Airplane.name,Booking.date_time from Booking,Account,Airplane,Flight,Owner_Flight"
-                           +" where Booking.account_id = Account.id"
+            String query = "Select Account.username,Booking.flight_id,Flight.name,Airplane.name,Booking.date_time from Booking,Account,Airplane,Flight,Owner_Flight"
+                           + " where Booking.account_id = Account.id"
                            +" and"
                            +" Airplane.id = Booking.airplane_id"
                            +" and"
@@ -35,8 +35,9 @@ namespace Lab3PRN.DAO
                 Booking temp = new Booking();
                 temp.Username = reader.GetString(0);
                 temp.Flight_id = reader.GetInt32(1);
-                temp.Airplane_name = reader.GetString(2);
-                temp.DateTime = reader.GetDateTime(3);
+                temp.Flight_name = reader.GetString(2);
+                temp.Airplane_name = reader.GetString(3);
+                temp.DateTime = reader.GetDateTime(4);
                 lists.Add(temp);
             }
 

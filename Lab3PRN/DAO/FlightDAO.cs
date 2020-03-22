@@ -15,7 +15,7 @@ namespace Lab3PRN.DAO
         {
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
-            String query = "Insert into Flight values(@val1,@val2,@val3,@val4,@val5,@val6,@val7,@val8,@val9,@val10,@val11)";
+            String query = "Insert into Flight values(@val1,@val2,@val3,@val4,@val5,@val6,@val7,@val8,@val9,@val10,@val11,@val12)";
             SqlCommand command = new SqlCommand(query, cnn);
             command.Parameters.AddWithValue("@val1",flight.Id);
             command.Parameters.AddWithValue("@val2",flight.Depart_time);
@@ -28,19 +28,20 @@ namespace Lab3PRN.DAO
             command.Parameters.AddWithValue("@val9", flight.Type);
             command.Parameters.AddWithValue("@val10", flight.Price);
             command.Parameters.AddWithValue("@val11", flight.No_seat);
+            command.Parameters.AddWithValue("@val12", flight.Name);
             command.ExecuteNonQuery();
             cnn.Close();
 
         }
 
-        public void insertOwnerFlight(Flight flight,int airplane_id)
+        public void insertOwnerFlight(int flight_id,int airplane_id)
         {
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
             String query = "Insert into Owner_Flight values(@val1,@val2)";
             SqlCommand command = new SqlCommand(query, cnn);
             command.Parameters.AddWithValue("@val1", airplane_id);
-            command.Parameters.AddWithValue("@val2", flight.Id);
+            command.Parameters.AddWithValue("@val2", flight_id);
             command.ExecuteNonQuery();
             cnn.Close();
 
@@ -58,14 +59,14 @@ namespace Lab3PRN.DAO
 
         }
 
-        public void deleteOwnerFlight(Flight flight, int airplane_id)
+        public void deleteOwnerFlight(int flight_id, int airplane_id)
         {
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
             String query = "Delete from Owner_Flight where airplane_id = @val1 and flight_id = @val2";
             SqlCommand command = new SqlCommand(query, cnn);
             command.Parameters.AddWithValue("@val1", airplane_id);
-            command.Parameters.AddWithValue("@val2", flight.Id);
+            command.Parameters.AddWithValue("@val2", flight_id);
             command.ExecuteNonQuery();
             cnn.Close();
 
@@ -113,7 +114,8 @@ namespace Lab3PRN.DAO
                 temp.Type = reader.GetString(8);
                 temp.Price = (float)reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
-                temp.Airplane_name = reader.GetString(11);
+                temp.Name = reader.GetString(11);
+                temp.Airplane_name = reader.GetString(12);
                 lists.Add(temp);
             }
 

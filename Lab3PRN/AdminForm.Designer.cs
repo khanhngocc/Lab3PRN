@@ -66,21 +66,25 @@
             this.txtFlightId = new System.Windows.Forms.TextBox();
             this.FlightId = new System.Windows.Forms.Label();
             this.FeedBack = new System.Windows.Forms.TabPage();
-            this.View_Booking = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txt_id_mess = new System.Windows.Forms.TextBox();
-            this.btnRemoveMess = new System.Windows.Forms.Button();
             this.dataGridInbox = new System.Windows.Forms.DataGridView();
-            this.dataGridBooking = new System.Windows.Forms.DataGridView();
+            this.btnRemoveMess = new System.Windows.Forms.Button();
+            this.txt_id_mess = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.View_Booking = new System.Windows.Forms.TabPage();
             this.btnAsyn = new System.Windows.Forms.Button();
+            this.dataGridBooking = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNameFlight = new System.Windows.Forms.TextBox();
+            this.btnClearFlight = new System.Windows.Forms.Button();
+            this.btnClearAirplane = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAirplane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAirplane)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFlight)).BeginInit();
             this.FeedBack.SuspendLayout();
-            this.View_Booking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).BeginInit();
+            this.View_Booking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +97,12 @@
             this.tabControl1.Location = new System.Drawing.Point(28, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1069, 560);
+            this.tabControl1.Size = new System.Drawing.Size(1069, 722);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageAirplane
             // 
+            this.tabPageAirplane.Controls.Add(this.btnClearAirplane);
             this.tabPageAirplane.Controls.Add(this.txtIdAirplane);
             this.tabPageAirplane.Controls.Add(this.label2);
             this.tabPageAirplane.Controls.Add(this.dataGridAirplane);
@@ -108,7 +113,7 @@
             this.tabPageAirplane.Location = new System.Drawing.Point(4, 25);
             this.tabPageAirplane.Name = "tabPageAirplane";
             this.tabPageAirplane.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAirplane.Size = new System.Drawing.Size(1061, 531);
+            this.tabPageAirplane.Size = new System.Drawing.Size(1061, 693);
             this.tabPageAirplane.TabIndex = 0;
             this.tabPageAirplane.Text = "Airplane Manipulation";
             this.tabPageAirplane.UseVisualStyleBackColor = true;
@@ -136,7 +141,7 @@
             this.dataGridAirplane.Name = "dataGridAirplane";
             this.dataGridAirplane.RowHeadersWidth = 51;
             this.dataGridAirplane.RowTemplate.Height = 24;
-            this.dataGridAirplane.Size = new System.Drawing.Size(547, 264);
+            this.dataGridAirplane.Size = new System.Drawing.Size(547, 466);
             this.dataGridAirplane.TabIndex = 4;
             this.dataGridAirplane.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAirplane_CellClick);
             // 
@@ -178,6 +183,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnClearFlight);
+            this.tabPage2.Controls.Add(this.txtNameFlight);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.comboType);
             this.tabPage2.Controls.Add(this.comboDirection);
             this.tabPage2.Controls.Add(this.txtNoSeat);
@@ -208,10 +216,11 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1061, 531);
+            this.tabPage2.Size = new System.Drawing.Size(1061, 693);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Flight Manipulation";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // comboType
             // 
@@ -290,17 +299,17 @@
             // dataGridFlight
             // 
             this.dataGridFlight.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridFlight.Location = new System.Drawing.Point(27, 263);
+            this.dataGridFlight.Location = new System.Drawing.Point(27, 295);
             this.dataGridFlight.Name = "dataGridFlight";
             this.dataGridFlight.RowHeadersWidth = 51;
             this.dataGridFlight.RowTemplate.Height = 24;
-            this.dataGridFlight.Size = new System.Drawing.Size(1003, 237);
+            this.dataGridFlight.Size = new System.Drawing.Size(1003, 374);
             this.dataGridFlight.TabIndex = 19;
             this.dataGridFlight.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridFlight_CellClick);
             // 
             // btnFRemove
             // 
-            this.btnFRemove.Location = new System.Drawing.Point(172, 199);
+            this.btnFRemove.Location = new System.Drawing.Point(172, 241);
             this.btnFRemove.Name = "btnFRemove";
             this.btnFRemove.Size = new System.Drawing.Size(90, 37);
             this.btnFRemove.TabIndex = 18;
@@ -310,7 +319,7 @@
             // 
             // btnFAdd
             // 
-            this.btnFAdd.Location = new System.Drawing.Point(61, 199);
+            this.btnFAdd.Location = new System.Drawing.Point(61, 241);
             this.btnFAdd.Name = "btnFAdd";
             this.btnFAdd.Size = new System.Drawing.Size(90, 37);
             this.btnFAdd.TabIndex = 16;
@@ -460,37 +469,21 @@
             this.FeedBack.Controls.Add(this.label11);
             this.FeedBack.Location = new System.Drawing.Point(4, 25);
             this.FeedBack.Name = "FeedBack";
-            this.FeedBack.Size = new System.Drawing.Size(1061, 531);
+            this.FeedBack.Size = new System.Drawing.Size(1061, 693);
             this.FeedBack.TabIndex = 2;
             this.FeedBack.Text = "Feed back";
             this.FeedBack.UseVisualStyleBackColor = true;
             // 
-            // View_Booking
+            // dataGridInbox
             // 
-            this.View_Booking.Controls.Add(this.btnAsyn);
-            this.View_Booking.Controls.Add(this.dataGridBooking);
-            this.View_Booking.Location = new System.Drawing.Point(4, 25);
-            this.View_Booking.Name = "View_Booking";
-            this.View_Booking.Size = new System.Drawing.Size(1061, 531);
-            this.View_Booking.TabIndex = 3;
-            this.View_Booking.Text = "View_Booking";
-            this.View_Booking.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(47, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(21, 17);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "ID";
-            // 
-            // txt_id_mess
-            // 
-            this.txt_id_mess.Location = new System.Drawing.Point(74, 27);
-            this.txt_id_mess.Name = "txt_id_mess";
-            this.txt_id_mess.Size = new System.Drawing.Size(113, 22);
-            this.txt_id_mess.TabIndex = 1;
+            this.dataGridInbox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInbox.Location = new System.Drawing.Point(50, 123);
+            this.dataGridInbox.Name = "dataGridInbox";
+            this.dataGridInbox.RowHeadersWidth = 51;
+            this.dataGridInbox.RowTemplate.Height = 24;
+            this.dataGridInbox.Size = new System.Drawing.Size(952, 538);
+            this.dataGridInbox.TabIndex = 5;
+            this.dataGridInbox.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInbox_CellClick);
             // 
             // btnRemoveMess
             // 
@@ -502,26 +495,32 @@
             this.btnRemoveMess.UseVisualStyleBackColor = true;
             this.btnRemoveMess.Click += new System.EventHandler(this.btnRemoveMess_Click);
             // 
-            // dataGridInbox
+            // txt_id_mess
             // 
-            this.dataGridInbox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInbox.Location = new System.Drawing.Point(50, 123);
-            this.dataGridInbox.Name = "dataGridInbox";
-            this.dataGridInbox.RowHeadersWidth = 51;
-            this.dataGridInbox.RowTemplate.Height = 24;
-            this.dataGridInbox.Size = new System.Drawing.Size(952, 365);
-            this.dataGridInbox.TabIndex = 5;
-            this.dataGridInbox.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInbox_CellClick);
+            this.txt_id_mess.Location = new System.Drawing.Point(74, 27);
+            this.txt_id_mess.Name = "txt_id_mess";
+            this.txt_id_mess.Size = new System.Drawing.Size(113, 22);
+            this.txt_id_mess.TabIndex = 1;
             // 
-            // dataGridBooking
+            // label11
             // 
-            this.dataGridBooking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridBooking.Location = new System.Drawing.Point(52, 79);
-            this.dataGridBooking.Name = "dataGridBooking";
-            this.dataGridBooking.RowHeadersWidth = 51;
-            this.dataGridBooking.RowTemplate.Height = 24;
-            this.dataGridBooking.Size = new System.Drawing.Size(957, 405);
-            this.dataGridBooking.TabIndex = 0;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(47, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(21, 17);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "ID";
+            // 
+            // View_Booking
+            // 
+            this.View_Booking.Controls.Add(this.btnAsyn);
+            this.View_Booking.Controls.Add(this.dataGridBooking);
+            this.View_Booking.Location = new System.Drawing.Point(4, 25);
+            this.View_Booking.Name = "View_Booking";
+            this.View_Booking.Size = new System.Drawing.Size(1061, 693);
+            this.View_Booking.TabIndex = 3;
+            this.View_Booking.Text = "View_Booking";
+            this.View_Booking.UseVisualStyleBackColor = true;
             // 
             // btnAsyn
             // 
@@ -533,11 +532,57 @@
             this.btnAsyn.UseVisualStyleBackColor = true;
             this.btnAsyn.Click += new System.EventHandler(this.btnAsyn_Click);
             // 
+            // dataGridBooking
+            // 
+            this.dataGridBooking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBooking.Location = new System.Drawing.Point(52, 79);
+            this.dataGridBooking.Name = "dataGridBooking";
+            this.dataGridBooking.RowHeadersWidth = 51;
+            this.dataGridBooking.RowTemplate.Height = 24;
+            this.dataGridBooking.Size = new System.Drawing.Size(957, 587);
+            this.dataGridBooking.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(58, 193);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 17);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Name";
+            // 
+            // txtNameFlight
+            // 
+            this.txtNameFlight.Location = new System.Drawing.Point(172, 190);
+            this.txtNameFlight.Name = "txtNameFlight";
+            this.txtNameFlight.Size = new System.Drawing.Size(169, 22);
+            this.txtNameFlight.TabIndex = 31;
+            // 
+            // btnClearFlight
+            // 
+            this.btnClearFlight.Location = new System.Drawing.Point(281, 241);
+            this.btnClearFlight.Name = "btnClearFlight";
+            this.btnClearFlight.Size = new System.Drawing.Size(90, 37);
+            this.btnClearFlight.TabIndex = 32;
+            this.btnClearFlight.Text = "Clear";
+            this.btnClearFlight.UseVisualStyleBackColor = true;
+            this.btnClearFlight.Click += new System.EventHandler(this.btnClearFlight_Click);
+            // 
+            // btnClearAirplane
+            // 
+            this.btnClearAirplane.Location = new System.Drawing.Point(296, 138);
+            this.btnClearAirplane.Name = "btnClearAirplane";
+            this.btnClearAirplane.Size = new System.Drawing.Size(89, 41);
+            this.btnClearAirplane.TabIndex = 7;
+            this.btnClearAirplane.Text = "Clear";
+            this.btnClearAirplane.UseVisualStyleBackColor = true;
+            this.btnClearAirplane.Click += new System.EventHandler(this.btnClearAirplane_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 618);
+            this.ClientSize = new System.Drawing.Size(1124, 764);
             this.Controls.Add(this.tabControl1);
             this.MaximizeBox = false;
             this.Name = "AdminForm";
@@ -552,8 +597,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFlight)).EndInit();
             this.FeedBack.ResumeLayout(false);
             this.FeedBack.PerformLayout();
-            this.View_Booking.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).EndInit();
+            this.View_Booking.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).EndInit();
             this.ResumeLayout(false);
 
@@ -606,6 +651,10 @@
         private System.Windows.Forms.TabPage View_Booking;
         private System.Windows.Forms.Button btnAsyn;
         private System.Windows.Forms.DataGridView dataGridBooking;
+        private System.Windows.Forms.TextBox txtNameFlight;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnClearAirplane;
+        private System.Windows.Forms.Button btnClearFlight;
     }
 }
 

@@ -276,6 +276,10 @@ namespace Lab3PRN
             comboType.SelectedIndex = 0;
             txtPrice.Text = "";
             txtNoSeat.Text = "";
+            txtNameFlight.Text = "";
+            comboAirplane.SelectedIndex = 0;
+            comboACountry.SelectedIndex = 0;
+            comboDCountry.SelectedIndex = 0;
         }
 
 
@@ -331,6 +335,14 @@ namespace Lab3PRN
                 return;
             }
 
+
+            if (IsEmpty(txtNameFlight))
+            {
+                MessageBox.Show("Text is empty");
+                txtNameFlight.Focus();
+                return;
+            }
+
             int id = Int32.Parse(txtFlightId.Text);
 
 
@@ -348,10 +360,11 @@ namespace Lab3PRN
                 flight.Type = comboType.SelectedItem.ToString();
                 flight.Price = float.Parse(txtPrice.Text);
                 flight.No_seat = Int32.Parse(txtNoSeat.Text);
+                flight.Name = txtNameFlight.Text;
                 flightDAO.insertFlight(flight);
                 KeyValuePair<int, String> selectedPair_airplane = (KeyValuePair<int, String>)comboAirplane.SelectedItem;
                 int airplane_id = selectedPair_airplane.Key;
-                flightDAO.insertOwnerFlight(flight, airplane_id);
+                flightDAO.insertOwnerFlight(id, airplane_id);
                 MessageBox.Show("Add successfully");
                 clearDataFlight();
                 updateDatagridFlight();
@@ -414,25 +427,21 @@ namespace Lab3PRN
                 return;
             }
 
+
+            if (IsEmpty(txtNameFlight))
+            {
+                MessageBox.Show("Text is empty");
+                txtNameFlight.Focus();
+                return;
+            }
+
             int id = Int32.Parse(txtFlightId.Text);
             KeyValuePair<int, String> selectedPair_airplane = (KeyValuePair<int, String>)comboAirplane.SelectedItem;
             int airplane_id = selectedPair_airplane.Key;
             if (flightDAO.isExistedFlightForDelete(id,airplane_id))
             {
-                Flight flight = new Flight();
-                flight.Id = id;
-                flight.Depart_time = txt_dep_time.Text;
-                flight.Arrival_time = txt_arr_time.Text;
-                flight.Depart_date = txt_dep_date.Text;
-                flight.Arrival_date = txt_arr_date.Text;
-                flight.Depart_country = comboDCountry.SelectedItem.ToString();
-                flight.Arrival_country = comboACountry.SelectedItem.ToString();
-                flight.Direction = comboDirection.SelectedItem.ToString();
-                flight.Type = comboType.SelectedItem.ToString();
-                flight.Price = float.Parse(txtPrice.Text);
-                flight.No_seat = Int32.Parse(txtNoSeat.Text);
                
-                flightDAO.deleteOwnerFlight(flight, airplane_id);
+                flightDAO.deleteOwnerFlight(id, airplane_id);
                 flightDAO.deleteFlight(id);
                 MessageBox.Show("Delete successfully");
                 clearDataFlight();
@@ -461,7 +470,8 @@ namespace Lab3PRN
             comboType.SelectedItem = dataGridFlight.Rows[e.RowIndex].Cells[8].Value.ToString();
             txtPrice.Text = dataGridFlight.Rows[e.RowIndex].Cells[9].Value.ToString();
             txtNoSeat.Text = dataGridFlight.Rows[e.RowIndex].Cells[10].Value.ToString();
-            comboAirplane.SelectedItem = dataGridFlight.Rows[e.RowIndex].Cells[11].Value.ToString();
+            txtNameFlight.Text = dataGridFlight.Rows[e.RowIndex].Cells[11].Value.ToString();
+            comboAirplane.SelectedItem = dataGridFlight.Rows[e.RowIndex].Cells[12].Value.ToString();
 
         }
 
@@ -508,6 +518,21 @@ namespace Lab3PRN
         private void btnAsyn_Click(object sender, EventArgs e)
         {
             updateDatagridBooking();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClearAirplane_Click(object sender, EventArgs e)
+        {
+            clearData();
+        }
+
+        private void btnClearFlight_Click(object sender, EventArgs e)
+        {
+            clearDataFlight();
         }
     }
 }
