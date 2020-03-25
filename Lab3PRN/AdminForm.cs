@@ -111,11 +111,19 @@ namespace Lab3PRN
         {
             dataGridBooking.DataSource = null;
             dataGridBooking.DataSource = bookingDAO.GetAllBooking();
+         
+           
+        }
+
+        public void updateDatagridStatistic()
+        {
+            comboStatistic.SelectedIndex = 0;
             txtFree.Text = bookingDAO.NumberFreeTicket() + "";
             txtTotal.Text = bookingDAO.NumberTotalTicket() + "";
             txtBooked.Text = bookingDAO.NumberBookedTicket() + "";
-           
+
         }
+
         private void AdminForm_Load(object sender, EventArgs e)
         {
             updateDatagridAirplane();
@@ -126,6 +134,7 @@ namespace Lab3PRN
             comboType.SelectedIndex = 0;
             updateDatagridInbox();
             updateDatagridBooking();
+            updateDatagridStatistic();
 
         }
 
@@ -523,11 +532,6 @@ namespace Lab3PRN
             updateDatagridBooking();
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClearAirplane_Click(object sender, EventArgs e)
         {
             clearData();
@@ -536,6 +540,34 @@ namespace Lab3PRN
         private void btnClearFlight_Click(object sender, EventArgs e)
         {
             clearDataFlight();
+        }
+
+        private void btnAsynStatistic_Click(object sender, EventArgs e)
+        {
+            updateDatagridStatistic();
+        }
+
+        private void comboStatistic_SelectedValueChanged(object sender, EventArgs e)
+        {
+            String current_value = comboStatistic.SelectedItem.ToString();
+
+            if(current_value.Equals("All"))
+            {
+                dataGridStatistic.DataSource = null;
+                dataGridStatistic.DataSource = flightDAO.GetAllFlight();
+            }
+            
+            if(current_value.Equals("Booked-Ticket"))
+            {
+                dataGridStatistic.DataSource = null;
+                dataGridStatistic.DataSource = flightDAO.GetAllBookedFlight();
+            }
+
+            if(current_value.Equals("Free-Ticket"))
+            {
+                dataGridStatistic.DataSource = null;
+                dataGridStatistic.DataSource = flightDAO.GetAllFreeFlight();
+            }
         }
     }
 }

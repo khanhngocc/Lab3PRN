@@ -123,5 +123,79 @@ namespace Lab3PRN.DAO
 
             return lists;
         }
+
+        public List<Flight> GetAllFreeFlight()
+        {
+            List<Flight> lists = new List<Flight>();
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Flight.*,Airplane.name from Flight,Owner_Flight,Airplane" +
+                          " where Flight.id = Owner_Flight.flight_id and"
+                          + " Airplane.id = Owner_Flight.airplane_id"
+                          +" and"
+                           + " Flight.id not in (Select Booking.flight_id from Booking)"
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Flight temp = new Flight();
+                temp.Id = reader.GetInt32(0);
+                temp.Depart_time = reader.GetString(1);
+                temp.Depart_date = reader.GetString(2);
+                temp.Arrival_time = reader.GetString(3);
+                temp.Arrival_date = reader.GetString(4);
+                temp.Depart_country = reader.GetString(5);
+                temp.Arrival_country = reader.GetString(6);
+                temp.Direction = reader.GetString(7);
+                temp.Type = reader.GetString(8);
+                temp.Price = (float)reader.GetDouble(9);
+                temp.No_seat = reader.GetInt32(10);
+                temp.Name = reader.GetString(11);
+                temp.Airplane_name = reader.GetString(12);
+                lists.Add(temp);
+            }
+
+            cnn.Close();
+
+            return lists;
+        }
+
+        public List<Flight> GetAllBookedFlight()
+        {
+            List<Flight> lists = new List<Flight>();
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Flight.*,Airplane.name from Flight,Owner_Flight,Airplane" +
+                          " where Flight.id = Owner_Flight.flight_id and"
+                          + " Airplane.id = Owner_Flight.airplane_id"
+                          + " and"
+                           + " Flight.id in (Select Booking.flight_id from Booking)"
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Flight temp = new Flight();
+                temp.Id = reader.GetInt32(0);
+                temp.Depart_time = reader.GetString(1);
+                temp.Depart_date = reader.GetString(2);
+                temp.Arrival_time = reader.GetString(3);
+                temp.Arrival_date = reader.GetString(4);
+                temp.Depart_country = reader.GetString(5);
+                temp.Arrival_country = reader.GetString(6);
+                temp.Direction = reader.GetString(7);
+                temp.Type = reader.GetString(8);
+                temp.Price = (float)reader.GetDouble(9);
+                temp.No_seat = reader.GetInt32(10);
+                temp.Name = reader.GetString(11);
+                temp.Airplane_name = reader.GetString(12);
+                lists.Add(temp);
+            }
+
+            cnn.Close();
+
+            return lists;
+        }
     }
 }

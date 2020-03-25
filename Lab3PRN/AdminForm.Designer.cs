@@ -77,12 +77,16 @@
             this.View_Booking = new System.Windows.Forms.TabPage();
             this.btnAsyn = new System.Windows.Forms.Button();
             this.dataGridBooking = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtFree = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtBooked = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.tabStatisticTicket = new System.Windows.Forms.TabPage();
+            this.dataGridStatistic = new System.Windows.Forms.DataGridView();
+            this.comboStatistic = new System.Windows.Forms.ComboBox();
+            this.btnAsynStatistic = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtBooked = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtFree = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageAirplane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAirplane)).BeginInit();
@@ -92,6 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).BeginInit();
             this.View_Booking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).BeginInit();
+            this.tabStatisticTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistic)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,6 +106,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.FeedBack);
             this.tabControl1.Controls.Add(this.View_Booking);
+            this.tabControl1.Controls.Add(this.tabStatisticTicket);
             this.tabControl1.Location = new System.Drawing.Point(28, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -236,7 +243,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Flight Manipulation";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // btnClearFlight
             // 
@@ -555,12 +561,6 @@
             // 
             // View_Booking
             // 
-            this.View_Booking.Controls.Add(this.txtTotal);
-            this.View_Booking.Controls.Add(this.label15);
-            this.View_Booking.Controls.Add(this.txtBooked);
-            this.View_Booking.Controls.Add(this.label14);
-            this.View_Booking.Controls.Add(this.txtFree);
-            this.View_Booking.Controls.Add(this.label13);
             this.View_Booking.Controls.Add(this.btnAsyn);
             this.View_Booking.Controls.Add(this.dataGridBooking);
             this.View_Booking.Location = new System.Drawing.Point(4, 25);
@@ -590,56 +590,108 @@
             this.dataGridBooking.Size = new System.Drawing.Size(957, 587);
             this.dataGridBooking.TabIndex = 0;
             // 
-            // label13
+            // tabStatisticTicket
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(169, 33);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 17);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Free-Ticket";
+            this.tabStatisticTicket.Controls.Add(this.dataGridStatistic);
+            this.tabStatisticTicket.Controls.Add(this.comboStatistic);
+            this.tabStatisticTicket.Controls.Add(this.btnAsynStatistic);
+            this.tabStatisticTicket.Controls.Add(this.txtTotal);
+            this.tabStatisticTicket.Controls.Add(this.label15);
+            this.tabStatisticTicket.Controls.Add(this.txtBooked);
+            this.tabStatisticTicket.Controls.Add(this.label14);
+            this.tabStatisticTicket.Controls.Add(this.txtFree);
+            this.tabStatisticTicket.Controls.Add(this.label13);
+            this.tabStatisticTicket.Location = new System.Drawing.Point(4, 25);
+            this.tabStatisticTicket.Name = "tabStatisticTicket";
+            this.tabStatisticTicket.Size = new System.Drawing.Size(1061, 693);
+            this.tabStatisticTicket.TabIndex = 4;
+            this.tabStatisticTicket.Text = "Statistic_Ticket";
+            this.tabStatisticTicket.UseVisualStyleBackColor = true;
             // 
-            // txtFree
+            // dataGridStatistic
             // 
-            this.txtFree.Location = new System.Drawing.Point(255, 30);
-            this.txtFree.Name = "txtFree";
-            this.txtFree.ReadOnly = true;
-            this.txtFree.Size = new System.Drawing.Size(100, 22);
-            this.txtFree.TabIndex = 3;
+            this.dataGridStatistic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStatistic.Location = new System.Drawing.Point(30, 138);
+            this.dataGridStatistic.Name = "dataGridStatistic";
+            this.dataGridStatistic.RowHeadersWidth = 51;
+            this.dataGridStatistic.RowTemplate.Height = 24;
+            this.dataGridStatistic.Size = new System.Drawing.Size(1002, 530);
+            this.dataGridStatistic.TabIndex = 11;
             // 
-            // label14
+            // comboStatistic
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(413, 33);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 17);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Booked-Ticket";
+            this.comboStatistic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboStatistic.FormattingEnabled = true;
+            this.comboStatistic.Items.AddRange(new object[] {
+            "All",
+            "Booked-Ticket",
+            "Free-Ticket"});
+            this.comboStatistic.Location = new System.Drawing.Point(30, 22);
+            this.comboStatistic.Name = "comboStatistic";
+            this.comboStatistic.Size = new System.Drawing.Size(200, 24);
+            this.comboStatistic.TabIndex = 10;
+            this.comboStatistic.SelectedValueChanged += new System.EventHandler(this.comboStatistic_SelectedValueChanged);
             // 
-            // txtBooked
+            // btnAsynStatistic
             // 
-            this.txtBooked.Location = new System.Drawing.Point(518, 28);
-            this.txtBooked.Name = "txtBooked";
-            this.txtBooked.ReadOnly = true;
-            this.txtBooked.Size = new System.Drawing.Size(100, 22);
-            this.txtBooked.TabIndex = 5;
+            this.btnAsynStatistic.Location = new System.Drawing.Point(30, 70);
+            this.btnAsynStatistic.Name = "btnAsynStatistic";
+            this.btnAsynStatistic.Size = new System.Drawing.Size(94, 39);
+            this.btnAsynStatistic.TabIndex = 9;
+            this.btnAsynStatistic.Text = "Asyn";
+            this.btnAsynStatistic.UseVisualStyleBackColor = true;
+            this.btnAsynStatistic.Click += new System.EventHandler(this.btnAsynStatistic_Click);
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(862, 22);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 22);
+            this.txtTotal.TabIndex = 8;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(665, 31);
+            this.label15.Location = new System.Drawing.Point(773, 27);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 17);
-            this.label15.TabIndex = 6;
+            this.label15.TabIndex = 7;
             this.label15.Text = "Total-Ticket";
             // 
-            // txtTotal
+            // txtBooked
             // 
-            this.txtTotal.Location = new System.Drawing.Point(754, 28);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(100, 22);
-            this.txtTotal.TabIndex = 7;
+            this.txtBooked.Location = new System.Drawing.Point(650, 24);
+            this.txtBooked.Name = "txtBooked";
+            this.txtBooked.ReadOnly = true;
+            this.txtBooked.Size = new System.Drawing.Size(100, 22);
+            this.txtBooked.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(545, 27);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Booked-Ticket";
+            // 
+            // txtFree
+            // 
+            this.txtFree.Location = new System.Drawing.Point(425, 24);
+            this.txtFree.Name = "txtFree";
+            this.txtFree.ReadOnly = true;
+            this.txtFree.Size = new System.Drawing.Size(100, 22);
+            this.txtFree.TabIndex = 4;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(339, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 17);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Free-Ticket";
             // 
             // AdminForm
             // 
@@ -662,8 +714,10 @@
             this.FeedBack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).EndInit();
             this.View_Booking.ResumeLayout(false);
-            this.View_Booking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).EndInit();
+            this.tabStatisticTicket.ResumeLayout(false);
+            this.tabStatisticTicket.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridStatistic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -719,6 +773,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnClearAirplane;
         private System.Windows.Forms.Button btnClearFlight;
+        private System.Windows.Forms.TabPage tabStatisticTicket;
+        private System.Windows.Forms.DataGridView dataGridStatistic;
+        private System.Windows.Forms.ComboBox comboStatistic;
+        private System.Windows.Forms.Button btnAsynStatistic;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtBooked;
