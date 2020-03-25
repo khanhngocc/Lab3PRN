@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAirplane = new System.Windows.Forms.TabPage();
+            this.btnClearAirplane = new System.Windows.Forms.Button();
             this.txtIdAirplane = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridAirplane = new System.Windows.Forms.DataGridView();
@@ -38,6 +39,9 @@
             this.txtNameAirplane = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnClearFlight = new System.Windows.Forms.Button();
+            this.txtNameFlight = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.comboType = new System.Windows.Forms.ComboBox();
             this.comboDirection = new System.Windows.Forms.ComboBox();
             this.txtNoSeat = new System.Windows.Forms.TextBox();
@@ -73,10 +77,12 @@
             this.View_Booking = new System.Windows.Forms.TabPage();
             this.btnAsyn = new System.Windows.Forms.Button();
             this.dataGridBooking = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNameFlight = new System.Windows.Forms.TextBox();
-            this.btnClearFlight = new System.Windows.Forms.Button();
-            this.btnClearAirplane = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtFree = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBooked = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAirplane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAirplane)).BeginInit();
@@ -117,6 +123,16 @@
             this.tabPageAirplane.TabIndex = 0;
             this.tabPageAirplane.Text = "Airplane Manipulation";
             this.tabPageAirplane.UseVisualStyleBackColor = true;
+            // 
+            // btnClearAirplane
+            // 
+            this.btnClearAirplane.Location = new System.Drawing.Point(296, 138);
+            this.btnClearAirplane.Name = "btnClearAirplane";
+            this.btnClearAirplane.Size = new System.Drawing.Size(89, 41);
+            this.btnClearAirplane.TabIndex = 7;
+            this.btnClearAirplane.Text = "Clear";
+            this.btnClearAirplane.UseVisualStyleBackColor = true;
+            this.btnClearAirplane.Click += new System.EventHandler(this.btnClearAirplane_Click);
             // 
             // txtIdAirplane
             // 
@@ -221,6 +237,32 @@
             this.tabPage2.Text = "Flight Manipulation";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // btnClearFlight
+            // 
+            this.btnClearFlight.Location = new System.Drawing.Point(281, 241);
+            this.btnClearFlight.Name = "btnClearFlight";
+            this.btnClearFlight.Size = new System.Drawing.Size(90, 37);
+            this.btnClearFlight.TabIndex = 32;
+            this.btnClearFlight.Text = "Clear";
+            this.btnClearFlight.UseVisualStyleBackColor = true;
+            this.btnClearFlight.Click += new System.EventHandler(this.btnClearFlight_Click);
+            // 
+            // txtNameFlight
+            // 
+            this.txtNameFlight.Location = new System.Drawing.Point(172, 190);
+            this.txtNameFlight.Name = "txtNameFlight";
+            this.txtNameFlight.Size = new System.Drawing.Size(169, 22);
+            this.txtNameFlight.TabIndex = 31;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(58, 193);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 17);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Name";
             // 
             // comboType
             // 
@@ -513,6 +555,12 @@
             // 
             // View_Booking
             // 
+            this.View_Booking.Controls.Add(this.txtTotal);
+            this.View_Booking.Controls.Add(this.label15);
+            this.View_Booking.Controls.Add(this.txtBooked);
+            this.View_Booking.Controls.Add(this.label14);
+            this.View_Booking.Controls.Add(this.txtFree);
+            this.View_Booking.Controls.Add(this.label13);
             this.View_Booking.Controls.Add(this.btnAsyn);
             this.View_Booking.Controls.Add(this.dataGridBooking);
             this.View_Booking.Location = new System.Drawing.Point(4, 25);
@@ -542,41 +590,56 @@
             this.dataGridBooking.Size = new System.Drawing.Size(957, 587);
             this.dataGridBooking.TabIndex = 0;
             // 
-            // label12
+            // label13
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(58, 193);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 17);
-            this.label12.TabIndex = 30;
-            this.label12.Text = "Name";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(169, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 17);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Free-Ticket";
             // 
-            // txtNameFlight
+            // txtFree
             // 
-            this.txtNameFlight.Location = new System.Drawing.Point(172, 190);
-            this.txtNameFlight.Name = "txtNameFlight";
-            this.txtNameFlight.Size = new System.Drawing.Size(169, 22);
-            this.txtNameFlight.TabIndex = 31;
+            this.txtFree.Location = new System.Drawing.Point(255, 30);
+            this.txtFree.Name = "txtFree";
+            this.txtFree.ReadOnly = true;
+            this.txtFree.Size = new System.Drawing.Size(100, 22);
+            this.txtFree.TabIndex = 3;
             // 
-            // btnClearFlight
+            // label14
             // 
-            this.btnClearFlight.Location = new System.Drawing.Point(281, 241);
-            this.btnClearFlight.Name = "btnClearFlight";
-            this.btnClearFlight.Size = new System.Drawing.Size(90, 37);
-            this.btnClearFlight.TabIndex = 32;
-            this.btnClearFlight.Text = "Clear";
-            this.btnClearFlight.UseVisualStyleBackColor = true;
-            this.btnClearFlight.Click += new System.EventHandler(this.btnClearFlight_Click);
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(413, 33);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(99, 17);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Booked-Ticket";
             // 
-            // btnClearAirplane
+            // txtBooked
             // 
-            this.btnClearAirplane.Location = new System.Drawing.Point(296, 138);
-            this.btnClearAirplane.Name = "btnClearAirplane";
-            this.btnClearAirplane.Size = new System.Drawing.Size(89, 41);
-            this.btnClearAirplane.TabIndex = 7;
-            this.btnClearAirplane.Text = "Clear";
-            this.btnClearAirplane.UseVisualStyleBackColor = true;
-            this.btnClearAirplane.Click += new System.EventHandler(this.btnClearAirplane_Click);
+            this.txtBooked.Location = new System.Drawing.Point(518, 28);
+            this.txtBooked.Name = "txtBooked";
+            this.txtBooked.ReadOnly = true;
+            this.txtBooked.Size = new System.Drawing.Size(100, 22);
+            this.txtBooked.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(665, 31);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(83, 17);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Total-Ticket";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(754, 28);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 22);
+            this.txtTotal.TabIndex = 7;
             // 
             // AdminForm
             // 
@@ -599,6 +662,7 @@
             this.FeedBack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).EndInit();
             this.View_Booking.ResumeLayout(false);
+            this.View_Booking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).EndInit();
             this.ResumeLayout(false);
 
@@ -655,6 +719,12 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnClearAirplane;
         private System.Windows.Forms.Button btnClearFlight;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtBooked;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtFree;
+        private System.Windows.Forms.Label label13;
     }
 }
 

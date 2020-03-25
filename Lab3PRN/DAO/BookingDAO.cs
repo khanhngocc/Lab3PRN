@@ -17,16 +17,15 @@ namespace Lab3PRN.DAO
             List<Booking> lists = new List<Booking>();
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
-            String query = "Select Account.username,Booking.flight_id,Flight.name,Airplane.name,Booking.date_time from Booking,Account,Airplane,Flight,Owner_Flight"
-                           + " where Booking.account_id = Account.id"
-                           +" and"
-                           +" Airplane.id = Booking.airplane_id"
-                           +" and"
-                           +" Flight.id = Booking.airplane_id"
-                           +" and"
-                           +" Owner_Flight.airplane_id = Airplane.id"
-                           +" and"
-                           +" Owner_Flight.flight_id = Flight.id"
+            String query = "Select Account.username,Flight.id,Flight.name,Airplane.name,Booking.date_time from Booking,Account,Flight,Airplane,Owner_Flight"
+                        +" where"
+                        +" Booking.account_id = Account.id"
+                        +" and"
+                        +" Booking.flight_id = Flight.id"
+                        +" and"
+                        +" Airplane.id = Owner_Flight.airplane_id"
+                        +" and"
+                        +" Flight.id = Owner_Flight.flight_id"
                       ;
             SqlCommand command = new SqlCommand(query, cnn);
             SqlDataReader reader = command.ExecuteReader();
@@ -44,6 +43,75 @@ namespace Lab3PRN.DAO
             cnn.Close();
 
             return lists;
+        }
+
+
+        public int NumberTotalTicket()
+        {
+            int num = 0;
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Count(*) from Flight"
+                        
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+           
+            if(reader.Read())
+            {
+                num = reader.GetInt32(0);
+            }
+
+            cnn.Close();
+
+            return num;
+        }
+
+
+        public int NumberFreeTicket()
+        {
+            int num = 0;
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Count(*) from Flight"
+                           +" where"
+                           +" Flight.id not in (Select Booking.flight_id from Booking)"
+
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                num = reader.GetInt32(0);
+            }
+
+            cnn.Close();
+
+            return num;
+        }
+
+        public int NumberBookedTicket()
+        {
+            int num = 0;
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Count(*) from Flight"
+                           + " where"
+                           + " Flight.id in (Select Booking.flight_id from Booking)"
+
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                num = reader.GetInt32(0);
+            }
+
+            cnn.Close();
+
+            return num;
         }
     }
 }

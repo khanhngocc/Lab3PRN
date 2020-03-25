@@ -111,6 +111,9 @@ namespace Lab3PRN
         {
             dataGridBooking.DataSource = null;
             dataGridBooking.DataSource = bookingDAO.GetAllBooking();
+            txtFree.Text = bookingDAO.NumberFreeTicket() + "";
+            txtTotal.Text = bookingDAO.NumberTotalTicket() + "";
+            txtBooked.Text = bookingDAO.NumberBookedTicket() + "";
            
         }
         private void AdminForm_Load(object sender, EventArgs e)
