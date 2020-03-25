@@ -19,6 +19,7 @@ namespace Lab3PRN.Entity
         private float price;
         private int no_seat;
         private String name;
+        private String airway_station;
         private String airplane_name;
         public int Id { get => id; set => id = value; }
         public string Depart_time { get => depart_time; set => depart_time = value; }
@@ -32,7 +33,8 @@ namespace Lab3PRN.Entity
         public float Price { get => price; set => price = value; }
         public int No_seat { get => no_seat; set => no_seat = value; }
         public string Name { get => name; set => name = value; }
+        public string Airway_station { get => airway_station; set => airway_station = value; }
         public string Airplane_name { get => airplane_name; set => airplane_name = value; }
-    
+       
     }
 }

@@ -87,6 +87,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtFree = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txt_airway_station = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageAirplane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAirplane)).BeginInit();
@@ -206,6 +208,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txt_airway_station);
+            this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.btnClearFlight);
             this.tabPage2.Controls.Add(this.txtNameFlight);
             this.tabPage2.Controls.Add(this.label12);
@@ -296,7 +300,7 @@
             // 
             // txtNoSeat
             // 
-            this.txtNoSeat.Location = new System.Drawing.Point(781, 157);
+            this.txtNoSeat.Location = new System.Drawing.Point(781, 150);
             this.txtNoSeat.Name = "txtNoSeat";
             this.txtNoSeat.Size = new System.Drawing.Size(169, 22);
             this.txtNoSeat.TabIndex = 27;
@@ -304,7 +308,7 @@
             // No_Seat
             // 
             this.No_Seat.AutoSize = true;
-            this.No_Seat.Location = new System.Drawing.Point(701, 157);
+            this.No_Seat.Location = new System.Drawing.Point(701, 150);
             this.No_Seat.Name = "No_Seat";
             this.No_Seat.Size = new System.Drawing.Size(63, 17);
             this.No_Seat.TabIndex = 26;
@@ -431,7 +435,7 @@
             // 
             // txt_arr_date
             // 
-            this.txt_arr_date.Location = new System.Drawing.Point(486, 157);
+            this.txt_arr_date.Location = new System.Drawing.Point(486, 150);
             this.txt_arr_date.Name = "txt_arr_date";
             this.txt_arr_date.Size = new System.Drawing.Size(169, 22);
             this.txt_arr_date.TabIndex = 9;
@@ -446,7 +450,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(387, 160);
+            this.label6.Location = new System.Drawing.Point(387, 153);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 17);
             this.label6.TabIndex = 7;
@@ -693,6 +697,22 @@
             this.label13.TabIndex = 3;
             this.label13.Text = "Free-Ticket";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(387, 195);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 17);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Airway_station";
+            // 
+            // txt_airway_station
+            // 
+            this.txt_airway_station.Location = new System.Drawing.Point(486, 190);
+            this.txt_airway_station.Name = "txt_airway_station";
+            this.txt_airway_station.Size = new System.Drawing.Size(169, 22);
+            this.txt_airway_station.TabIndex = 34;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -783,6 +803,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtFree;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txt_airway_station;
+        private System.Windows.Forms.Label label16;
     }
 }
 

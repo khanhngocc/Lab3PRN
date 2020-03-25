@@ -15,7 +15,7 @@ namespace Lab3PRN.DAO
         {
             SqlConnection cnn = dBContext.GetConnection();
             cnn.Open();
-            String query = "Insert into Flight values(@val1,@val2,@val3,@val4,@val5,@val6,@val7,@val8,@val9,@val10,@val11,@val12)";
+            String query = "Insert into Flight values(@val1,@val2,@val3,@val4,@val5,@val6,@val7,@val8,@val9,@val10,@val11,@val12,@val13)";
             SqlCommand command = new SqlCommand(query, cnn);
             command.Parameters.AddWithValue("@val1",flight.Id);
             command.Parameters.AddWithValue("@val2",flight.Depart_time);
@@ -29,6 +29,7 @@ namespace Lab3PRN.DAO
             command.Parameters.AddWithValue("@val10", flight.Price);
             command.Parameters.AddWithValue("@val11", flight.No_seat);
             command.Parameters.AddWithValue("@val12", flight.Name);
+            command.Parameters.AddWithValue("@val13", flight.Airway_station);
             command.ExecuteNonQuery();
             cnn.Close();
 
@@ -115,7 +116,8 @@ namespace Lab3PRN.DAO
                 temp.Price = (float)reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
                 lists.Add(temp);
             }
 
@@ -152,7 +154,8 @@ namespace Lab3PRN.DAO
                 temp.Price = (float)reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
                 lists.Add(temp);
             }
 
@@ -189,7 +192,8 @@ namespace Lab3PRN.DAO
                 temp.Price = (float)reader.GetDouble(9);
                 temp.No_seat = reader.GetInt32(10);
                 temp.Name = reader.GetString(11);
-                temp.Airplane_name = reader.GetString(12);
+                temp.Airway_station = reader.GetString(12);
+                temp.Airplane_name = reader.GetString(13);
                 lists.Add(temp);
             }
 

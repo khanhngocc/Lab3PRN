@@ -289,6 +289,7 @@ namespace Lab3PRN
             txtPrice.Text = "";
             txtNoSeat.Text = "";
             txtNameFlight.Text = "";
+            txt_airway_station.Text = "";
             comboAirplane.SelectedIndex = 0;
             comboACountry.SelectedIndex = 0;
             comboDCountry.SelectedIndex = 0;
@@ -355,6 +356,14 @@ namespace Lab3PRN
                 return;
             }
 
+            if (IsEmpty(txt_airway_station))
+            {
+                MessageBox.Show("Text is empty");
+                txtNameFlight.Focus();
+                return;
+            }
+
+
             int id = Int32.Parse(txtFlightId.Text);
 
 
@@ -373,6 +382,7 @@ namespace Lab3PRN
                 flight.Price = float.Parse(txtPrice.Text);
                 flight.No_seat = Int32.Parse(txtNoSeat.Text);
                 flight.Name = txtNameFlight.Text;
+                flight.Airway_station = txt_airway_station.Text;
                 flightDAO.insertFlight(flight);
                 KeyValuePair<int, String> selectedPair_airplane = (KeyValuePair<int, String>)comboAirplane.SelectedItem;
                 int airplane_id = selectedPair_airplane.Key;
@@ -397,55 +407,6 @@ namespace Lab3PRN
                 return;
             }
 
-            if (IsEmpty(txt_dep_time))
-            {
-                MessageBox.Show("Text is empty");
-                txt_dep_time.Focus();
-                return;
-            }
-
-            if (IsEmpty(txt_arr_time))
-            {
-                MessageBox.Show("Text is empty");
-                txt_arr_time.Focus();
-                return;
-            }
-
-            if (IsEmpty(txt_dep_date))
-            {
-                MessageBox.Show("Text is empty");
-                txt_dep_date.Focus();
-                return;
-            }
-
-            if (IsEmpty(txt_arr_date))
-            {
-                MessageBox.Show("Text is empty");
-                txt_arr_date.Focus();
-                return;
-            }
-
-            if (IsFloat(txtPrice) == false)
-            {
-                MessageBox.Show("price is not an float");
-                txtPrice.Focus();
-                return;
-            }
-
-            if (IsInt(txtNoSeat) == false)
-            {
-                MessageBox.Show("No Seat is not an integer");
-                txtNoSeat.Focus();
-                return;
-            }
-
-
-            if (IsEmpty(txtNameFlight))
-            {
-                MessageBox.Show("Text is empty");
-                txtNameFlight.Focus();
-                return;
-            }
 
             int id = Int32.Parse(txtFlightId.Text);
             KeyValuePair<int, String> selectedPair_airplane = (KeyValuePair<int, String>)comboAirplane.SelectedItem;
@@ -483,8 +444,9 @@ namespace Lab3PRN
             txtPrice.Text = dataGridFlight.Rows[e.RowIndex].Cells[9].Value.ToString();
             txtNoSeat.Text = dataGridFlight.Rows[e.RowIndex].Cells[10].Value.ToString();
             txtNameFlight.Text = dataGridFlight.Rows[e.RowIndex].Cells[11].Value.ToString();
-            comboAirplane.SelectedItem = dataGridFlight.Rows[e.RowIndex].Cells[12].Value.ToString();
-
+            txt_airway_station.Text = dataGridFlight.Rows[e.RowIndex].Cells[12].Value.ToString();
+            comboAirplane.SelectedItem = dataGridFlight.Rows[e.RowIndex].Cells[13].Value.ToString();
+            
         }
 
         private void dataGridInbox_CellClick(object sender, DataGridViewCellEventArgs e)
