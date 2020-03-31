@@ -11,6 +11,29 @@ namespace Lab3PRN.DAO
     class FlightDAO
     {
         DBContext dBContext = new DBContext();
+
+        public bool isExistedNoSeatFlight(int id,int no_seat)
+        {
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select * from Flight"
+                          +" where id = @val1"
+                          +" and"
+                          +" no_seat = @val2";
+            SqlCommand command = new SqlCommand(query, cnn);
+            command.Parameters.AddWithValue("@val1",id);
+            command.Parameters.AddWithValue("@val2", no_seat);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if(reader.Read())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
         public void insertFlight(Flight flight)
         {
             SqlConnection cnn = dBContext.GetConnection();
@@ -89,7 +112,22 @@ namespace Lab3PRN.DAO
 
             return false;
         }
+        public bool isFlightBooked(int flight_id)
+        {
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select * from Booking where flight_id = @val1";
+            SqlCommand command = new SqlCommand(query, cnn);
+           
+            command.Parameters.AddWithValue("@val1", flight_id);
+            SqlDataReader reader = command.ExecuteReader();
 
+            if (reader.Read())
+                return true;
+            cnn.Close();
+
+            return false;
+        }
         public List<Flight> GetAllFlight()
         {
             List<Flight> lists = new List<Flight>();

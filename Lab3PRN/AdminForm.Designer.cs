@@ -39,6 +39,8 @@
             this.txtNameAirplane = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txt_airway_station = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.btnClearFlight = new System.Windows.Forms.Button();
             this.txtNameFlight = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -87,8 +89,14 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtFree = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txt_airway_station = new System.Windows.Forms.TextBox();
+            this.txtEarnMoney = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtFilterFeedback = new System.Windows.Forms.TextBox();
+            this.btnFilterFeedBack = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtFilterBooking = new System.Windows.Forms.TextBox();
+            this.btnFilterBooking = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAirplane.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAirplane)).BeginInit();
@@ -247,6 +255,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Flight Manipulation";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txt_airway_station
+            // 
+            this.txt_airway_station.Location = new System.Drawing.Point(486, 190);
+            this.txt_airway_station.Name = "txt_airway_station";
+            this.txt_airway_station.Size = new System.Drawing.Size(169, 22);
+            this.txt_airway_station.TabIndex = 34;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(387, 195);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 17);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Airway_station";
             // 
             // btnClearFlight
             // 
@@ -515,6 +539,9 @@
             // 
             // FeedBack
             // 
+            this.FeedBack.Controls.Add(this.btnFilterFeedBack);
+            this.FeedBack.Controls.Add(this.txtFilterFeedback);
+            this.FeedBack.Controls.Add(this.label18);
             this.FeedBack.Controls.Add(this.dataGridInbox);
             this.FeedBack.Controls.Add(this.btnRemoveMess);
             this.FeedBack.Controls.Add(this.txt_id_mess);
@@ -529,19 +556,19 @@
             // dataGridInbox
             // 
             this.dataGridInbox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInbox.Location = new System.Drawing.Point(50, 123);
+            this.dataGridInbox.Location = new System.Drawing.Point(50, 84);
             this.dataGridInbox.Name = "dataGridInbox";
             this.dataGridInbox.RowHeadersWidth = 51;
             this.dataGridInbox.RowTemplate.Height = 24;
-            this.dataGridInbox.Size = new System.Drawing.Size(952, 538);
+            this.dataGridInbox.Size = new System.Drawing.Size(952, 577);
             this.dataGridInbox.TabIndex = 5;
             this.dataGridInbox.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInbox_CellClick);
             // 
             // btnRemoveMess
             // 
-            this.btnRemoveMess.Location = new System.Drawing.Point(50, 66);
+            this.btnRemoveMess.Location = new System.Drawing.Point(193, 27);
             this.btnRemoveMess.Name = "btnRemoveMess";
-            this.btnRemoveMess.Size = new System.Drawing.Size(85, 38);
+            this.btnRemoveMess.Size = new System.Drawing.Size(85, 30);
             this.btnRemoveMess.TabIndex = 4;
             this.btnRemoveMess.Text = "Remove";
             this.btnRemoveMess.UseVisualStyleBackColor = true;
@@ -550,8 +577,9 @@
             // txt_id_mess
             // 
             this.txt_id_mess.Location = new System.Drawing.Point(74, 27);
+            this.txt_id_mess.Multiline = true;
             this.txt_id_mess.Name = "txt_id_mess";
-            this.txt_id_mess.Size = new System.Drawing.Size(113, 22);
+            this.txt_id_mess.Size = new System.Drawing.Size(113, 30);
             this.txt_id_mess.TabIndex = 1;
             // 
             // label11
@@ -565,6 +593,9 @@
             // 
             // View_Booking
             // 
+            this.View_Booking.Controls.Add(this.btnFilterBooking);
+            this.View_Booking.Controls.Add(this.txtFilterBooking);
+            this.View_Booking.Controls.Add(this.label19);
             this.View_Booking.Controls.Add(this.btnAsyn);
             this.View_Booking.Controls.Add(this.dataGridBooking);
             this.View_Booking.Location = new System.Drawing.Point(4, 25);
@@ -578,7 +609,7 @@
             // 
             this.btnAsyn.Location = new System.Drawing.Point(52, 22);
             this.btnAsyn.Name = "btnAsyn";
-            this.btnAsyn.Size = new System.Drawing.Size(94, 39);
+            this.btnAsyn.Size = new System.Drawing.Size(94, 30);
             this.btnAsyn.TabIndex = 1;
             this.btnAsyn.Text = "Asyn";
             this.btnAsyn.UseVisualStyleBackColor = true;
@@ -596,6 +627,8 @@
             // 
             // tabStatisticTicket
             // 
+            this.tabStatisticTicket.Controls.Add(this.label17);
+            this.tabStatisticTicket.Controls.Add(this.txtEarnMoney);
             this.tabStatisticTicket.Controls.Add(this.dataGridStatistic);
             this.tabStatisticTicket.Controls.Add(this.comboStatistic);
             this.tabStatisticTicket.Controls.Add(this.btnAsynStatistic);
@@ -630,9 +663,9 @@
             "All",
             "Booked-Ticket",
             "Free-Ticket"});
-            this.comboStatistic.Location = new System.Drawing.Point(30, 22);
+            this.comboStatistic.Location = new System.Drawing.Point(30, 29);
             this.comboStatistic.Name = "comboStatistic";
-            this.comboStatistic.Size = new System.Drawing.Size(200, 24);
+            this.comboStatistic.Size = new System.Drawing.Size(140, 24);
             this.comboStatistic.TabIndex = 10;
             this.comboStatistic.SelectedValueChanged += new System.EventHandler(this.comboStatistic_SelectedValueChanged);
             // 
@@ -648,7 +681,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(862, 22);
+            this.txtTotal.Location = new System.Drawing.Point(702, 24);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(100, 22);
@@ -657,7 +690,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(773, 27);
+            this.label15.Location = new System.Drawing.Point(613, 27);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(83, 17);
             this.label15.TabIndex = 7;
@@ -665,7 +698,7 @@
             // 
             // txtBooked
             // 
-            this.txtBooked.Location = new System.Drawing.Point(650, 24);
+            this.txtBooked.Location = new System.Drawing.Point(439, 76);
             this.txtBooked.Name = "txtBooked";
             this.txtBooked.ReadOnly = true;
             this.txtBooked.Size = new System.Drawing.Size(100, 22);
@@ -674,7 +707,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(545, 27);
+            this.label14.Location = new System.Drawing.Point(335, 79);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 17);
             this.label14.TabIndex = 5;
@@ -682,7 +715,7 @@
             // 
             // txtFree
             // 
-            this.txtFree.Location = new System.Drawing.Point(425, 24);
+            this.txtFree.Location = new System.Drawing.Point(439, 24);
             this.txtFree.Name = "txtFree";
             this.txtFree.ReadOnly = true;
             this.txtFree.Size = new System.Drawing.Size(100, 22);
@@ -691,27 +724,82 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(339, 27);
+            this.label13.Location = new System.Drawing.Point(354, 29);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(80, 17);
             this.label13.TabIndex = 3;
             this.label13.Text = "Free-Ticket";
             // 
-            // label16
+            // txtEarnMoney
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(387, 195);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 17);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "Airway_station";
+            this.txtEarnMoney.Location = new System.Drawing.Point(702, 79);
+            this.txtEarnMoney.Name = "txtEarnMoney";
+            this.txtEarnMoney.ReadOnly = true;
+            this.txtEarnMoney.Size = new System.Drawing.Size(100, 22);
+            this.txtEarnMoney.TabIndex = 12;
             // 
-            // txt_airway_station
+            // label17
             // 
-            this.txt_airway_station.Location = new System.Drawing.Point(486, 190);
-            this.txt_airway_station.Name = "txt_airway_station";
-            this.txt_airway_station.Size = new System.Drawing.Size(169, 22);
-            this.txt_airway_station.TabIndex = 34;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(612, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 17);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Earn Money";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(308, 34);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 17);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Filter User";
+            // 
+            // txtFilterFeedback
+            // 
+            this.txtFilterFeedback.Location = new System.Drawing.Point(387, 27);
+            this.txtFilterFeedback.Multiline = true;
+            this.txtFilterFeedback.Name = "txtFilterFeedback";
+            this.txtFilterFeedback.Size = new System.Drawing.Size(113, 30);
+            this.txtFilterFeedback.TabIndex = 7;
+            // 
+            // btnFilterFeedBack
+            // 
+            this.btnFilterFeedBack.Location = new System.Drawing.Point(506, 27);
+            this.btnFilterFeedBack.Name = "btnFilterFeedBack";
+            this.btnFilterFeedBack.Size = new System.Drawing.Size(85, 30);
+            this.btnFilterFeedBack.TabIndex = 8;
+            this.btnFilterFeedBack.Text = "Filter";
+            this.btnFilterFeedBack.UseVisualStyleBackColor = true;
+            this.btnFilterFeedBack.Click += new System.EventHandler(this.btnFilterFeedBack_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(212, 25);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(73, 17);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Filter User";
+            // 
+            // txtFilterBooking
+            // 
+            this.txtFilterBooking.Location = new System.Drawing.Point(291, 22);
+            this.txtFilterBooking.Multiline = true;
+            this.txtFilterBooking.Name = "txtFilterBooking";
+            this.txtFilterBooking.Size = new System.Drawing.Size(113, 30);
+            this.txtFilterBooking.TabIndex = 8;
+            // 
+            // btnFilterBooking
+            // 
+            this.btnFilterBooking.Location = new System.Drawing.Point(410, 22);
+            this.btnFilterBooking.Name = "btnFilterBooking";
+            this.btnFilterBooking.Size = new System.Drawing.Size(85, 30);
+            this.btnFilterBooking.TabIndex = 9;
+            this.btnFilterBooking.Text = "Filter";
+            this.btnFilterBooking.UseVisualStyleBackColor = true;
+            this.btnFilterBooking.Click += new System.EventHandler(this.btnFilterBooking_Click);
             // 
             // AdminForm
             // 
@@ -734,6 +822,7 @@
             this.FeedBack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInbox)).EndInit();
             this.View_Booking.ResumeLayout(false);
+            this.View_Booking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridBooking)).EndInit();
             this.tabStatisticTicket.ResumeLayout(false);
             this.tabStatisticTicket.PerformLayout();
@@ -805,6 +894,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txt_airway_station;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtEarnMoney;
+        private System.Windows.Forms.Button btnFilterFeedBack;
+        private System.Windows.Forms.TextBox txtFilterFeedback;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnFilterBooking;
+        private System.Windows.Forms.TextBox txtFilterBooking;
+        private System.Windows.Forms.Label label19;
     }
 }
 

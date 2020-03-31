@@ -121,7 +121,7 @@ namespace Lab3PRN
             txtFree.Text = bookingDAO.NumberFreeTicket() + "";
             txtTotal.Text = bookingDAO.NumberTotalTicket() + "";
             txtBooked.Text = bookingDAO.NumberBookedTicket() + "";
-
+            txtEarnMoney.Text = bookingDAO.GetTotalMoney() + "$";
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -413,12 +413,18 @@ namespace Lab3PRN
             int airplane_id = selectedPair_airplane.Key;
             if (flightDAO.isExistedFlightForDelete(id,airplane_id))
             {
-               
-                flightDAO.deleteOwnerFlight(id, airplane_id);
-                flightDAO.deleteFlight(id);
-                MessageBox.Show("Delete successfully");
-                clearDataFlight();
-                updateDatagridFlight();
+                if (flightDAO.isFlightBooked(id) == false)
+                {
+                    flightDAO.deleteOwnerFlight(id, airplane_id);
+                    flightDAO.deleteFlight(id);
+                    MessageBox.Show("Delete successfully");
+                    clearDataFlight();
+                    updateDatagridFlight();
+                }
+                else
+                {
+                    MessageBox.Show("Cancel delete flight because user has booked it");
+                }
 
             }
             else
@@ -530,6 +536,21 @@ namespace Lab3PRN
                 dataGridStatistic.DataSource = null;
                 dataGridStatistic.DataSource = flightDAO.GetAllFreeFlight();
             }
+        }
+
+        private void btnFilterFeedBack_Click(object sender, EventArgs e)
+        {
+            String username_filter = txtFilterFeedback.Text;
+            dataGridInbox.DataSource = null;
+            dataGridInbox.DataSource = inboxDAO.FilterInboxByUsername(username_filter);
+
+        }
+
+        private void btnFilterBooking_Click(object sender, EventArgs e)
+        {
+            String username_filter = txtFilterBooking.Text;
+            dataGridBooking.DataSource = null;
+            dataGridBooking.DataSource = bookingDAO.FilterBookingByUsername(username_filter);
         }
     }
 }

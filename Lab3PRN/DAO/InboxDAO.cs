@@ -51,6 +51,34 @@ namespace Lab3PRN.DAO
 
             return lists;
         }
+        public List<Inbox> FilterInboxByUsername(String username)
+        {
+            String parten = "%" + username + "%";
+            List<Inbox> lists = new List<Inbox>();
+            SqlConnection cnn = dBContext.GetConnection();
+            cnn.Open();
+            String query = "Select Inbox.*,Account.username from Inbox,Account"
+                           + " where"
+                           + " Inbox.account_id = Account.id" +
+                           " and Account.username like @val1"
+                      ;
+            SqlCommand command = new SqlCommand(query, cnn);
+            command.Parameters.AddWithValue("@val1", parten);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Inbox temp = new Inbox();
+                temp.Id = reader.GetInt32(0);
+                temp.Message = reader.GetString(1);
+                temp.DateTime = reader.GetDateTime(2);
+                temp.Account_id = reader.GetInt32(3);
+                temp.Username = reader.GetString(4);
+                lists.Add(temp);
+            }
 
+            cnn.Close();
+
+            return lists;
+        }
     }
 }
